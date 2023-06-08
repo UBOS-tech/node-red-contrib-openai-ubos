@@ -44,3 +44,10 @@ To get your `Organization` visit https://platform.openai.com/account/org-setting
 
 <img width="1440" alt="image" src="https://github.com/UBOS-tech/node-red-contrib-openai-ubos/assets/41735477/086e3ada-7003-4a8c-8ae1-722c0acc238f">
 
+### Bugs reports and feature requests
+
+Please report any issues or feature requests at <a href="https://github.com/UBOS-tech/node-red-contrib-openai-ubos/issues">GitHub</a>.
+
+## License
+
+[MIT License](https://github.com/UBOS-tech/node-red-contrib-openai-ubos/blob/main/LICENSE)
