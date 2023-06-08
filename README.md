@@ -38,3 +38,6 @@ To get your `Organization` visit https://platform.openai.com/account/org-setting
    msg.stop = ["word-1", "word-2"]
    ```
  - `msg.presence_penalty`: This property can be used to control the model's preference for introducing new concepts during text generation. Like `msg.frequency_penalty`, it should be a number between 0 and 1.
+
+<img width="1440" alt="image" src="https://github.com/UBOS-tech/node-red-contrib-openai-ubos/assets/41735477/086e3ada-7003-4a8c-8ae1-722c0acc238f">
+
