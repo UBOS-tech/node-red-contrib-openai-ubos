@@ -1,0 +1,269 @@
+{
+	"id": "a4d40ba5d7b857b4",
+	"type": "subflow",
+	"name": "OpenAI Ubos",
+	"info": "## Properties\n\n - `msg.OPENAI_API_KEY`: This is the API key provided by OpenAI. It is necessary for authentication when making requests to the OpenAI API.\n\n - `msg.prompt`: This string forms the initial text from which the model will generate its continuation.\n - `msg.model`: This property defines the name of the OpenAI model to be used for generating the text, for example, \"text-davinci-003\".\n - `msg.temperature`: This property controls the randomness in the output of the model. Higher values result in more random outputs. This is a numerical value.\n - `msg.max_tokens`: This property sets the maximum length of the model output. This is a numerical value.\n - `msg.messages`: This is an array meant to hold any messages that are to be passed along the Node-RED flow. Each object in the array can contain additional properties like `role` and `content`. For example:\n   ```json\n   \"messages\": [\n       {\"role\": \"system\", \"content\": \"Set the behavior\"},\n       {\"role\": \"assistant\", \"content\": \"Provide examples\"},\n       {\"role\": \"user\", \"content\": \"Set the instructions\"}\n   ]\n   ```\n - `msg.top_p`: This property is used when nucleus sampling is preferred for generating the text. The value for this property is expected to be a number between 0 and 1.\n - `msg.frequency_penalty`: This property allows for penalization of new tokens based on their frequency. The value should be a number between 0 and 1.\n - `msg.presence_penalty`: This property can be used to control the model's preference for introducing new concepts during text generation. Like `msg.frequency_penalty`, it should be a number between 0 and 1.",
+	"category": "",
+	"in": [
+		{
+			"x": 340,
+			"y": 160,
+			"wires": [
+				{
+					"id": "2d7aeaca0af19282"
+				}
+			]
+		}
+	],
+	"out": [
+		{
+			"x": 760,
+			"y": 180,
+			"wires": [
+				{
+					"id": "39cbec504d5a64b3",
+					"port": 0
+				},
+				{
+					"id": "2d7aeaca0af19282",
+					"port": 1
+				}
+			]
+		}
+	],
+	"env": [
+		{
+			"name": "model",
+			"type": "str",
+			"value": "text-davinci-003",
+			"ui": {
+				"icon": "font-awesome/fa-sign-out",
+				"label": {
+					"en-US": "Model Name"
+				},
+				"type": "select",
+				"opts": {
+					"opts": [
+						{
+							"l": {
+								"en-US": "text-davinci-003"
+							},
+							"v": "text-davinci-003"
+						},
+						{
+							"l": {
+								"en-US": "text-davinci-002"
+							},
+							"v": "text-davinci-002"
+						},
+						{
+							"l": {
+								"en-US": "gpt-3.5-turbo"
+							},
+							"v": "gpt-3.5-turbo"
+						},
+						{
+							"l": {
+								"en-US": "gpt-4"
+							},
+							"v": "gpt-4"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "temperature",
+			"type": "num",
+			"value": "0.5",
+			"ui": {
+				"icon": "font-awesome/fa-sign-out",
+				"label": {
+					"en-US": "Temperature"
+				},
+				"type": "input",
+				"opts": {
+					"types": [
+						"num"
+					]
+				}
+			}
+		},
+		{
+			"name": "max_tokens",
+			"type": "num",
+			"value": "60",
+			"ui": {
+				"icon": "font-awesome/fa-sign-out",
+				"label": {
+					"en-US": "Max Tokens"
+				},
+				"type": "input",
+				"opts": {
+					"types": [
+						"num"
+					]
+				}
+			}
+		},
+		{
+			"name": "prompt",
+			"type": "str",
+			"value": "",
+			"ui": {
+				"icon": "font-awesome/fa-sign-out",
+				"label": {
+					"en-US": "Prompt"
+				},
+				"type": "input",
+				"opts": {
+					"types": [
+						"str"
+					]
+				}
+			}
+		},
+		{
+			"name": "frequency_penalty",
+			"type": "num",
+			"value": "",
+			"ui": {
+				"icon": "font-awesome/fa-sign-out",
+				"label": {
+					"en-US": "Freq. penalty"
+				},
+				"type": "input",
+				"opts": {
+					"types": [
+						"num"
+					]
+				}
+			}
+		},
+		{
+			"name": "presence_penalty",
+			"type": "num",
+			"value": "",
+			"ui": {
+				"icon": "font-awesome/fa-sign-out",
+				"label": {
+					"en-US": "Pr. penalty"
+				},
+				"type": "input",
+				"opts": {
+					"types": [
+						"num"
+					]
+				}
+			}
+		},
+		{
+			"name": "top_p",
+			"type": "num",
+			"value": "1",
+			"ui": {
+				"icon": "font-awesome/fa-sign-out",
+				"label": {
+					"en-US": "Top_p"
+				},
+				"type": "input",
+				"opts": {
+					"types": [
+						"num"
+					]
+				}
+			}
+		},
+		{
+			"name": "stop",
+			"type": "json",
+			"value": "[]",
+			"ui": {
+				"icon": "font-awesome/fa-sign-out",
+				"label": {
+					"en-US": "Stop"
+				},
+				"type": "input",
+				"opts": {
+					"types": [
+						"json"
+					]
+				}
+			}
+		},
+		{
+			"name": "OPENAI_API_KEY",
+			"type": "cred",
+			"ui": {
+				"icon": "font-awesome/fa-sign-out",
+				"label": {
+					"en-US": "OpenAI Key"
+				},
+				"type": "input",
+				"opts": {
+					"types": [
+						"cred"
+					]
+				}
+			}
+		}
+	],
+	"meta": {
+		"module": "node-red-contrib-openai-ubos",
+		"type": "openai-ubos",
+		"version": "0.1.0",
+		"author": "vovajr11",
+		"desc": "Node-red",
+		"keywords": "Node-RED",
+		"license": "MIT"
+	},
+	"credentials": {
+		"OPENAI_API_KEY": ""
+	},
+	"color": "#74AA9C",
+	"icon": "https://seeklogo.com/images/O/open-ai-logo-8B9BFEDC26-seeklogo.com.png",
+	"flow": [
+		{
+			"id": "2d7aeaca0af19282",
+			"type": "function",
+			"z": "a4d40ba5d7b857b4",
+			"name": "",
+			"func": "/*\n    model: \"text-davinci-003\" | \"text-davinci-002\" | \"gpt-3.5-turbo\" | \"gpt-4\"\n*/\nconst model = msg.model || env.get(\"model\");\n\nif (!env.get(\"OPENAI_API_KEY\") && !msg.OPENAI_API_KEY) {\n    msg.payload = \"Enter OPENAI_API_KEY\";\n    \n    return [null, msg];\n}\n\nmsg.headers = {\n    'Content-Type': 'application/json',\n    'Authorization': `Bearer ${env.get(\"OPENAI_API_KEY\") || msg.OPENAI_API_KEY}`\n};\n\nconst stopReq = msg.stop || env.get(\"stop\");\nconst baseRequestBody = {\n    model,\n    temperature: msg.temperature || env.get(\"temperature\"),\n    max_tokens: msg.max_tokens || env.get(\"max_tokens\"),\n    top_p: msg.top_p || env.get(\"top_p\"),\n    frequency_penalty: msg.frequency_penalty || env.get(\"frequency_penalty\"),\n    presence_penalty: msg.presence_penalty || env.get(\"presence_penalty\"),\n    stop: stopReq && stopReq.length === 0 ? null : stopReq,\n}\n\nif (model === \"text-davinci-003\" || model === \"text-davinci-002\") {\n    const prompt = msg.prompt || env.get(\"prompt\");\n\n    if (prompt) {\n        msg.url = 'https://api.openai.com/v1/completions';\n\n        msg.payload = {\n            ...baseRequestBody,\n            prompt,\n        };\n\n        return [msg, null]\n    } else {\n        msg.payload = \"Enter prompt\";\n        return [null, msg]\n    }\n}\n\nif (model === \"gpt-3.5-turbo\") {\n    if (msg.messages) {\n        msg.url = 'https://api.openai.com/v1/chat/completions';\n        msg.payload = {\n            ...baseRequestBody,\n            messages: msg.messages\n        }\n\n        return [msg, null]\n    } else {\n        msg.payload = \"Enter valid prompt\";\n        return [null, msg]\n    }\n}\n\nif (model === \"gpt-4\") {\n    if (msg.messages) {\n        msg.url = 'https://api.openai.com/v1/chat/completions';\n        msg.payload = {\n            ...baseRequestBody,\n            messages: msg.messages\n        }\n        \n        return [msg, null]\n    } else {\n        msg.payload = \"Enter valid prompt\";\n        return [null, msg]\n    }\n}\n\nmsg.payload = \"Enter an existing model\";\nreturn [null, msg];",
+			"outputs": 2,
+			"noerr": 0,
+			"initialize": "",
+			"finalize": "",
+			"libs": [],
+			"x": 460,
+			"y": 160,
+			"wires": [
+				[
+					"39cbec504d5a64b3"
+				],
+				[]
+			]
+		},
+		{
+			"id": "39cbec504d5a64b3",
+			"type": "http request",
+			"z": "a4d40ba5d7b857b4",
+			"name": "",
+			"method": "POST",
+			"ret": "obj",
+			"paytoqs": "ignore",
+			"url": "",
+			"tls": "",
+			"persist": false,
+			"proxy": "",
+			"insecureHTTPParser": false,
+			"authType": "",
+			"senderr": false,
+			"headers": [],
+			"x": 630,
+			"y": 140,
+			"wires": [
+				[]
+			]
+		}
+	]
+}
