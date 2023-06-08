@@ -1,5 +1,23 @@
-## node-red-contrib-openai-ubos
-
+node-red-contrib-openai-ubos
+==============
+<img width="100%"  alt="Ubos - End-to-End Software Development Platform" src="https://ubos.tech/wp-content/uploads/2023/03/cropped-Group-21015-1.png">
+<h3 align="center">
+  <b><a href="https://ubos.tech/">UBOS</a></b>
+  •
+  <a href="https://community.ubos.tech/">Community</a>
+  •
+  <a href="https://www.youtube.com/@ubos_tech">Youtube</a>
+  •
+  <a href="https://discord.com/invite/dt59QaptH2">Discord</a>
+  •
+  <a href="https://github.com/UBOS-tech">GitHub</a>
+  </h3>
+<div align="center">
+ 
+[![flow](https://img.shields.io/badge/platform-Node--RED-red)](https://flows.nodered.org/node/node-red-contrib-openai-ubos)
+[![npm](https://img.shields.io/npm/v/node-red-contrib-openai-ubos)](https://www.npmjs.com/package/node-red-contrib-openai-ubos)
+ 
+</div>
 A Node-RED node that interacts with OpenAI machine learning models to generate text like ChatGPT.
 
 ### Quick Start
