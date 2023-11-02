@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-openai-ubos",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "subflow.js",
   "scripts": {
