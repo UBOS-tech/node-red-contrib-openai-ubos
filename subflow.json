@@ -2,7 +2,7 @@
 	"id": "a4d40ba5d7b857b4",
 	"type": "subflow",
 	"name": "OpenAI Ubos",
-	"info": "## Properties\n\n - `msg.OPENAI_API_KEY`: This is the API key provided by OpenAI. It is necessary for authentication when making requests to the OpenAI API.\n\n - `msg.prompt`: This string forms the initial text from which the model will generate its continuation.\n - `msg.model`: This property defines the name of the OpenAI model to be used for generating the text, for example, \"text-davinci-003\".\n - `msg.temperature`: This property controls the randomness in the output of the model. Higher values result in more random outputs. This is a numerical value.\n - `msg.max_tokens`: This property sets the maximum length of the model output. This is a numerical value.\n - `msg.messages`: This is an array meant to hold any messages that are to be passed along the Node-RED flow. Each object in the array can contain additional properties like `role` and `content`. For example:\n   ```json\n   \"messages\": [\n       {\"role\": \"system\", \"content\": \"Set the behavior\"},\n       {\"role\": \"assistant\", \"content\": \"Provide examples\"},\n       {\"role\": \"user\", \"content\": \"Set the instructions\"}\n   ]\n   ```\n - `msg.top_p`: This property is used when nucleus sampling is preferred for generating the text. The value for this property is expected to be a number between 0 and 1.\n - `msg.frequency_penalty`: This property allows for penalization of new tokens based on their frequency. The value should be a number between 0 and 1.\n - `msg.presence_penalty`: This property can be used to control the model's preference for introducing new concepts during text generation. Like `msg.frequency_penalty`, it should be a number between 0 and 1.\n    ```json\n    msg.OPENAI_API_KEY = \"your api key\";\n    msg.model = \"gpt-3.5-turbo\";\n    msg.messages = [\n       {\"role\": \"system\", \"content\": \"Set the behavior\"},\n       {\"role\": \"assistant\", \"content\": \"Provide examples\"},\n       {\"role\": \"user\", \"content\": \"Set the instructions\"}\n   ]\n    ```\n### Create embeddings\n When `msg.model` is set to `text-embedding-ada-002`:\n  - **[Required]** `input`: [Type: string or array] Input text to embed, encoded as a string or array of tokens. To embed multiple inputs in a single request, pass an array of strings or array of token arrays. Each input must not exceed the max input tokens for the model (8191 tokens for `text-embedding-ada-002`) and cannot be an empty string. [Example Python code](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb) for counting tokens.\n\n  - `user`: [Type: string] A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices).\n    ```json\n    msg.OPENAI_API_KEY = \"your api key\";\n    msg.model = \"text-embedding-ada-002\";\n    msg.input = \"Lorem Ipsum is simply dummy text of the printing and typesetting industry\";\n    ```",
+	"info": "## Properties\n\n - `msg.OPENAI_API_KEY`: This is the API key provided by OpenAI. It is necessary for authentication when making requests to the OpenAI API.\n\n - `msg.prompt`: This string forms the initial text from which the model will generate its continuation.\n - `msg.model`: This property defines the name of the OpenAI model to be used for generating the text, for example, \"text-davinci-003\".\n - `msg.temperature`: This property controls the randomness in the output of the model. Higher values result in more random outputs. This is a numerical value.\n - `msg.max_tokens`: This property sets the maximum length of the model output. This is a numerical value.\n - `msg.messages`: This is an array meant to hold any messages that are to be passed along the Node-RED flow. Each object in the array can contain additional properties like `role` and `content`. For example:\n   ```json\n   \"messages\": [\n       {\"role\": \"system\", \"content\": \"Set the behavior\"},\n       {\"role\": \"assistant\", \"content\": \"Provide examples\"},\n       {\"role\": \"user\", \"content\": \"Set the instructions\"}\n   ]\n   ```\n - `msg.top_p`: This property is used when nucleus sampling is preferred for generating the text. The value for this property is expected to be a number between 0 and 1.\n - `msg.frequency_penalty`: This property allows for penalization of new tokens based on their frequency. The value should be a number between 0 and 1.\n - `msg.presence_penalty`: This property can be used to control the model's preference for introducing new concepts during text generation. Like `msg.frequency_penalty`, it should be a number between 0 and 1.\n    ```json\n    msg.OPENAI_API_KEY = \"your api key\";\n    msg.model = \"gpt-3.5-turbo\";\n    msg.messages = [\n       {\"role\": \"system\", \"content\": \"Set the behavior\"},\n       {\"role\": \"assistant\", \"content\": \"Provide examples\"},\n       {\"role\": \"user\", \"content\": \"Set the instructions\"}\n   ]\n    ```\n### Custom settings\n To send your custom settings for the OpenAI request, you can use the `msg.settings` parameter. Simply pass an object with all the necessary fields according to the OpenAI documentation.\n```json\nmsg.url = \"https://api.openai.com/v1/embeddings\";\nmsg.OPENAI_API_KEY = \"your API key\";\nmsg.settings = {\n    model: \"text-embedding-3-large\",\n    input: \"Hello World\"\n}\n```\n### Create embeddings\n When `msg.model` is set to `text-embedding-ada-002`:\n  - **[Required]** `input`: [Type: string or array] Input text to embed, encoded as a string or array of tokens. To embed multiple inputs in a single request, pass an array of strings or array of token arrays. Each input must not exceed the max input tokens for the model (8191 tokens for `text-embedding-ada-002`) and cannot be an empty string. [Example Python code](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb) for counting tokens.\n\n  - `user`: [Type: string] A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices).\n    ```json\n    msg.OPENAI_API_KEY = \"your api key\";\n    msg.model = \"text-embedding-ada-002\";\n    msg.input = \"Lorem Ipsum is simply dummy text of the printing and typesetting industry\";\n    ```",
 	"category": "",
 	"in": [
 		{
@@ -229,9 +229,6 @@
 		"keywords": "Node-RED",
 		"license": "MIT"
 	},
-	"credentials": {
-		"OPENAI_API_KEY": ""
-	},
 	"color": "#74AA9C",
 	"icon": "https://seeklogo.com/images/O/open-ai-logo-8B9BFEDC26-seeklogo.com.png",
 	"status": {
@@ -250,7 +247,7 @@
 			"type": "function",
 			"z": "a4d40ba5d7b857b4",
 			"name": "start",
-			"func": "const model = msg.model || env.get(\"model\");\n\nlet messages = msg.messages || env.get(\"messages\");\nlet embeddingInput = msg.input || env.get(\"messages\");\n\nif (typeof messages === \"string\") messages = [{ \"role\": \"user\", \"content\": messages }]\n\nmsg.headers = {\n    'Content-Type': 'application/json',\n    'Authorization': `Bearer ${env.get(\"OPENAI_API_KEY\") || msg.OPENAI_API_KEY}`\n};\n\nconst stopReq = msg.stop || env.get(\"stop\");\nconst baseRequestBody = {\n    model,\n    temperature: msg.temperature || env.get(\"temperature\"),\n    max_tokens: msg.max_tokens || env.get(\"max_tokens\"),\n    top_p: msg.top_p || env.get(\"top_p\"),\n    frequency_penalty: msg.frequency_penalty || env.get(\"frequency_penalty\"),\n    presence_penalty: msg.presence_penalty || env.get(\"presence_penalty\"),\n    stop: stopReq && stopReq.length === 0 ? null : stopReq,\n}\n\nif (model === \"text-embedding-ada-002\") {\n    reqStatus();\n\n    msg.url = \"https://api.openai.com/v1/embeddings\";\n    msg.payload = {\n        model,\n        input: embeddingInput,\n        user: msg.user\n    }\n\n    return [msg, null]\n}\n\nif (model && model.length > 0) {\n    reqStatus();\n    \n    msg.url = \"https://api.openai.com/v1/chat/completions\";\n    msg.payload = {\n        ...baseRequestBody,\n        messages\n    }\n\n    return [msg, null]\n}\n\nfunction reqStatus() {\n    return node.status({ fill: \"blue\", shape: \"dot\", text: \"Requesting\" });\n}\n\nnode.status({ fill: \"red\", shape: \"dot\", text: \"Error\" });\nmsg.payload = \"Enter an existing model\";\n\nreturn [null, msg];",
+			"func": "const model = msg.model || env.get(\"model\");\nconst url = msg.url || env.get(\"url\");\n\nlet messages = msg.messages || env.get(\"messages\");\nlet embeddingInput = msg.input || env.get(\"messages\");\n\nif (typeof messages === \"string\") messages = [{ \"role\": \"user\", \"content\": messages }]\n\nmsg.headers = {\n    'Content-Type': 'application/json',\n    'Authorization': `Bearer ${env.get(\"OPENAI_API_KEY\") || msg.OPENAI_API_KEY}`\n};\n\nconst stopReq = msg.stop || env.get(\"stop\");\nconst baseRequestBody = {\n    model,\n    temperature: msg.temperature || env.get(\"temperature\"),\n    max_tokens: msg.max_tokens || env.get(\"max_tokens\"),\n    top_p: msg.top_p || env.get(\"top_p\"),\n    frequency_penalty: msg.frequency_penalty || env.get(\"frequency_penalty\"),\n    presence_penalty: msg.presence_penalty || env.get(\"presence_penalty\"),\n    stop: stopReq && stopReq.length === 0 ? null : stopReq,\n}\n\nif (msg.settings) {\n    if (!msg.url) {\n        node.status({ fill: \"red\", shape: \"dot\", text: \"Error\" });\n        msg.payload = \"Enter url\";\n\n        return [null, msg];\n    }\n\n    reqStatus();\n    msg.payload = { ...baseRequestBody, ...msg.settings};\n\n    node.warn(msg.payload);\n\n    return [msg, null]\n}\n\nif (model === \"text-embedding-ada-002\") {\n    reqStatus();\n\n    msg.url = \"https://api.openai.com/v1/embeddings\";\n    msg.payload = {\n        model,\n        input: embeddingInput,\n        user: msg.user\n    }\n\n    return [msg, null]\n}\n\nif (model && model.length > 0) {\n    reqStatus();\n    \n    msg.url = url ? url : \"https://api.openai.com/v1/chat/completions\" ;\n    msg.payload = {\n        ...baseRequestBody,\n        messages,\n        ...msg.payload\n    }\n\n    return [msg, null]\n}\n\nfunction reqStatus() {\n    return node.status({ fill: \"blue\", shape: \"dot\", text: \"Requesting\" });\n}\n\nnode.status({ fill: \"red\", shape: \"dot\", text: \"Error\" });\nmsg.payload = \"Enter an existing model\";\n\nreturn [null, msg];",
 			"outputs": 2,
 			"noerr": 0,
 			"initialize": "",
@@ -329,7 +326,7 @@
 			"type": "function",
 			"z": "a4d40ba5d7b857b4",
 			"name": "check api key",
-			"func": "const apiKey = env.get(\"OPENAI_API_KEY\");\n\nif (apiKey) {\n    node.status({ fill: \"blue\", shape: \"dot\", text: \"Connecting...\" })\n\n    msg.method = \"POST\";\n    msg.url = 'https://api.openai.com/v1/engines/davinci/completions';\n    msg.headers = {\n        'Content-Type': 'application/json',\n        'Authorization': `Bearer ${env.get(\"OPENAI_API_KEY\")}`\n    };\n\n    msg.payload = {};\n    return msg;\n}",
+			"func": "const apiKey = env.get(\"OPENAI_API_KEY\");\n\nif (apiKey) {\n    node.status({ fill: \"blue\", shape: \"dot\", text: \"Connecting...\" })\n\n    msg.method = \"POST\";\n    msg.url = 'https://api.openai.com/v1/chat/completions';\n    msg.headers = {\n        'Content-Type': 'application/json',\n        'Authorization': `Bearer ${env.get(\"OPENAI_API_KEY\")}`\n    };\n\n    msg.payload = {\n        messages: [{ role: \"system\", content: \"\" }],\n        model: \"gpt-3.5-turbo\",\n    };\n    return msg;\n}",
 			"outputs": 1,
 			"noerr": 0,
 			"initialize": "",
@@ -340,37 +337,6 @@
 			"wires": [
 				[
 					"9e54294479192ba2"
-				]
-			]
-		},
-		{
-			"id": "e60b12c1.93bb3",
-			"type": "inject",
-			"z": "a4d40ba5d7b857b4",
-			"name": "",
-			"props": [
-				{
-					"p": "payload",
-					"v": "Started!",
-					"vt": "str"
-				},
-				{
-					"p": "topic",
-					"v": "",
-					"vt": "str"
-				}
-			],
-			"repeat": "",
-			"crontab": "",
-			"once": true,
-			"topic": "",
-			"payload": "Started!",
-			"payloadType": "str",
-			"x": 400,
-			"y": 300,
-			"wires": [
-				[
-					"81daf71367957de3"
 				]
 			]
 		},
@@ -404,7 +370,7 @@
 			"type": "function",
 			"z": "a4d40ba5d7b857b4",
 			"name": "return status",
-			"func": "if (msg.statusCode === 200) node.status({ fill: \"green\", shape: \"dot\", text: \"Connected\" });\n    else node.status({ fill: \"red\", shape: \"dot\", text: \"Incorrect API key\" });\n\nreturn msg;",
+			"func": "const error = msg.payload?.error?.type;\n\nif (msg.statusCode === 200) node.status({ fill: \"green\", shape: \"dot\", text: \"Connected\" });\n    else node.status({fill: \"red\", shape: \"dot\", text: error ? error : \"Something went wrong\" });\n\nreturn msg;",
 			"outputs": 1,
 			"noerr": 0,
 			"initialize": "",
